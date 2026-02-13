@@ -1,0 +1,757 @@
+{
+  "clear_images": {
+    "clear_easy_1.jpg": {
+      "winner": "tesseract",
+      "final_text": "Hello there. My name is Henry, and I'll be teaching you how to read.",
+      "confidence": 0.95,
+      "corpus_score": 0.99,
+      "reliable": true,
+      "runtime": 0.254,
+      "winner_runtime": 0.203,
+      "all_outputs": {
+        "tesseract": {
+          "text": "Hello there. My name is Henry, and I'll be teaching you how to read.",
+          "confidence": 0.95,
+          "corpus_score": 0.99,
+          "reliable": true,
+          "engine": "tesseract",
+          "runtime": 0.203
+        },
+        "paddleocr": {
+          "engine": "paddleocr",
+          "skipped": true,
+          "aborted": true
+        },
+        "easyocr": {
+          "engine": "easyocr",
+          "skipped": true,
+          "aborted": true
+        }
+      }
+    },
+    "clear_easy_2.jpg": {
+      "winner": "tesseract",
+      "final_text": "OCR Benchmark: The quick brown fox jumps over the lazy dog.",
+      "confidence": 0.96,
+      "corpus_score": 0.91,
+      "reliable": true,
+      "runtime": 0.256,
+      "winner_runtime": 0.253,
+      "all_outputs": {
+        "tesseract": {
+          "text": "OCR Benchmark: The quick brown fox jumps over the lazy dog.",
+          "confidence": 0.96,
+          "corpus_score": 0.91,
+          "reliable": true,
+          "engine": "tesseract",
+          "runtime": 0.253
+        },
+        "paddleocr": {
+          "engine": "paddleocr",
+          "skipped": true,
+          "aborted": true
+        },
+        "easyocr": {
+          "engine": "easyocr",
+          "skipped": true,
+          "aborted": true
+        }
+      }
+    },
+    "clear_hard_1.jpg": {
+      "winner": null,
+      "final_text": "",
+      "confidence": 0.0,
+      "corpus_score": 0.0,
+      "reliable": false,
+      "runtime": 0.861,
+      "winner_runtime": null,
+      "all_outputs": {
+        "tesseract": {
+          "text": "ThIs Project, while SimPle in ConCept, ReQuikes aN exTraQrDinAry aMevnt of FoCus. The TeXt ic wRitTen in a stylized Font, with InConsistent CaSing and Spacing. OCR enbines must nol only ReCognize the CharActers, but also ReAcsemble them inte Coherent Sentences.",
+          "confidence": 0.77,
+          "corpus_score": 0.8,
+          "reliable": false,
+          "engine": "tesseract",
+          "runtime": 0.303
+        },
+        "easyocr": {
+          "text": "ThIs Project; while SimPle in ConCept; ReQuiRes aN exTraOrDinAry aMount of FoCus: The TeXt ic wRitTen in stylzed Font with InConsistent CaSing and Spacing: OCR enGines must noT only ReCognize the CharActers, but also ReAcsemble them into Coherent Sentences:",
+          "confidence": 0.58,
+          "corpus_score": 0.91,
+          "reliable": false,
+          "engine": "easyocr",
+          "runtime": 0.856
+        },
+        "paddleocr": {
+          "engine": "paddleocr",
+          "skipped": true,
+          "aborted": true
+        }
+      }
+    },
+    "clear_hard_2.jpg": {
+      "winner": "tesseract",
+      "final_text": "This project is designed to make autonomous AI reading glasses that can read text in real time. It was originally designed to read people's emotions but was rejected due to complexity. Despite the decrease in complexity, the project is still monstrously complex requiring multiple days of full concentration from me.",
+      "confidence": 0.95,
+      "corpus_score": 0.97,
+      "reliable": true,
+      "runtime": 0.423,
+      "winner_runtime": 0.373,
+      "all_outputs": {
+        "tesseract": {
+          "text": "This project is designed to make autonomous AI reading glasses that can read text in real time. It was originally designed to read people's emotions but was rejected due to complexity. Despite the decrease in complexity, the project is still monstrously complex requiring multiple days of full concentration from me.",
+          "confidence": 0.95,
+          "corpus_score": 0.97,
+          "reliable": true,
+          "engine": "tesseract",
+          "runtime": 0.373
+        },
+        "paddleocr": {
+          "engine": "paddleocr",
+          "skipped": true,
+          "aborted": true
+        },
+        "easyocr": {
+          "engine": "easyocr",
+          "skipped": true,
+          "aborted": true
+        }
+      }
+    },
+    "clear_medium_1.jpg": {
+      "winner": "tesseract",
+      "final_text": "hELLo AHGlasses. Today i sHall test your abllity to reAd capital lettErs. I'm alSo tesTing your ability to read bEtween spAces. Cool, huh? Look! L.;\u201d.\u2019;]",
+      "confidence": 0.89,
+      "corpus_score": 0.89,
+      "reliable": true,
+      "runtime": 0.306,
+      "winner_runtime": 0.303,
+      "all_outputs": {
+        "tesseract": {
+          "text": "hELLo AHGlasses. Today i sHall test your abllity to reAd capital lettErs. I'm alSo tesTing your ability to read bEtween spAces. Cool, huh? Look! L.;\u201d.\u2019;]",
+          "confidence": 0.89,
+          "corpus_score": 0.89,
+          "reliable": true,
+          "engine": "tesseract",
+          "runtime": 0.303
+        },
+        "paddleocr": {
+          "engine": "paddleocr",
+          "skipped": true,
+          "aborted": true
+        },
+        "easyocr": {
+          "engine": "easyocr",
+          "skipped": true,
+          "aborted": true
+        }
+      }
+    },
+    "clear_medium_2.jpg": {
+      "winner": "tesseract",
+      "final_text": "Welcome to the AHGlasses OCR benchmark. This paragraph is designed to test the engine's ability to read multiple lines of text with consistent formatting. Each sentence is simple, but the layout introduces mild complexity. The goal is to ensure that line segmentation, character recognition, and punctuation handling are all functioning correctly.",
+      "confidence": 0.96,
+      "corpus_score": 0.91,
+      "reliable": true,
+      "runtime": 0.408,
+      "winner_runtime": 0.368,
+      "all_outputs": {
+        "tesseract": {
+          "text": "Welcome to the AHGlasses OCR benchmark. This paragraph is designed to test the engine's ability to read multiple lines of text with consistent formatting. Each sentence is simple, but the layout introduces mild complexity. The goal is to ensure that line segmentation, character recognition, and punctuation handling are all functioning correctly.",
+          "confidence": 0.96,
+          "corpus_score": 0.91,
+          "reliable": true,
+          "engine": "tesseract",
+          "runtime": 0.368
+        },
+        "paddleocr": {
+          "engine": "paddleocr",
+          "skipped": true,
+          "aborted": true
+        },
+        "easyocr": {
+          "engine": "easyocr",
+          "skipped": true,
+          "aborted": true
+        }
+      }
+    }
+  },
+  "complex_images": {
+    "complex_easy_1.jpg": {
+      "winner": null,
+      "final_text": "",
+      "confidence": 0.0,
+      "corpus_score": 0.0,
+      "reliable": false,
+      "runtime": 0.256,
+      "winner_runtime": null,
+      "all_outputs": {
+        "tesseract": {
+          "text": "[18 (ENT18 (OED FE OLY CES!",
+          "confidence": 0.28,
+          "corpus_score": 0.39,
+          "reliable": false,
+          "engine": "tesseract",
+          "runtime": 0.254
+        },
+        "easyocr": {
+          "text": "7ns Text 1 fotated 45 Oeofees",
+          "confidence": 0.17,
+          "corpus_score": 0.33,
+          "reliable": false,
+          "engine": "easyocr",
+          "runtime": 0.253
+        },
+        "paddleocr": {
+          "engine": "paddleocr",
+          "skipped": true,
+          "aborted": true
+        }
+      }
+    },
+    "complex_easy_2.jpg": {
+      "winner": null,
+      "final_text": "",
+      "confidence": 0.0,
+      "corpus_score": 0.0,
+      "reliable": false,
+      "runtime": 0.81,
+      "winner_runtime": null,
+      "all_outputs": {
+        "tesseract": {
+          "text": "i Vii Qa rR eS S= = S35 TF SS",
+          "confidence": 0.51,
+          "corpus_score": 0.79,
+          "reliable": false,
+          "engine": "tesseract",
+          "runtime": 0.356
+        },
+        "easyocr": {
+          "text": "@lass",
+          "confidence": 0.5,
+          "corpus_score": 0.41,
+          "reliable": false,
+          "engine": "easyocr",
+          "runtime": 0.806
+        },
+        "paddleocr": {
+          "engine": "paddleocr",
+          "skipped": true,
+          "aborted": true
+        }
+      }
+    },
+    "complex_hard_1.jpg": {
+      "winner": "tesseract",
+      "final_text": "AR QDECODE Light Baskerville Old Face ALGERIAN -JPo HERMdINN ARK GARTER AR BERKLEY Monotype Corsiva Segoe Seriet",
+      "confidence": 0.73,
+      "corpus_score": 0.5,
+      "reliable": true,
+      "runtime": 0.458,
+      "winner_runtime": 0.422,
+      "all_outputs": {
+        "tesseract": {
+          "text": "AR QDECODE Light Baskerville Old Face ALGERIAN -JPo HERMdINN ARK GARTER AR BERKLEY Monotype Corsiva Segoe Seriet",
+          "confidence": 0.73,
+          "corpus_score": 0.5,
+          "reliable": true,
+          "engine": "tesseract",
+          "runtime": 0.422
+        },
+        "paddleocr": {
+          "engine": "paddleocr",
+          "skipped": true,
+          "aborted": true
+        },
+        "easyocr": {
+          "engine": "easyocr",
+          "skipped": true,
+          "aborted": true
+        }
+      }
+    },
+    "complex_hard_2.jpg": {
+      "winner": null,
+      "final_text": "",
+      "confidence": 0.0,
+      "corpus_score": 0.0,
+      "reliable": false,
+      "runtime": 2.219,
+      "winner_runtime": null,
+      "all_outputs": {
+        "tesseract": {
+          "text": "TF tontilecl evolution! (wex?igit) mpgs) fan 23) ac A | Se GR Ms PS 8 Hi x fee ete Soe i E> 0, A> by Q <] | perce ee ol \u201cTIE Fond (ert @waLthe pop GRMN ares) \u201c1B, CYL Dd [Be oarstening |",
+          "confidence": 0.29,
+          "corpus_score": 0.62,
+          "reliable": false,
+          "engine": "tesseract",
+          "runtime": 0.623
+        },
+        "easyocr": {
+          "text": "DES Rath HiZbZbZG F (ntiled_ewglutioo (uex?rey_npjes [Al [e 4H[0 62l LGc (A1 fom BES #BE AZ( HABZpLAZBb 6 (fem J Pq+k: ABBEY eviens Etoq+ {r QvLt (zy,3466 Retk [A) [B C)AeIDI [cl Godlybm & Ra",
+          "confidence": 0.29,
+          "corpus_score": 0.49,
+          "reliable": false,
+          "engine": "easyocr",
+          "runtime": 2.217
+        },
+        "paddleocr": {
+          "engine": "paddleocr",
+          "skipped": true,
+          "aborted": true
+        }
+      }
+    },
+    "complex_medium_1.jpg": {
+      "winner": null,
+      "final_text": "",
+      "confidence": 0.0,
+      "corpus_score": 0.0,
+      "reliable": false,
+      "runtime": 3.429,
+      "winner_runtime": null,
+      "all_outputs": {
+        "tesseract": {
+          "text": "so\" S'LBD: SROWARD COUNTY. FL Loward \u00a9. Purmun, CLERK 28\u00b065 S71 19 OM Cee Ace's On Broward County Sherff's Office si OSes BR p< A Booking Repert f Qs S29 \u20ac20 ae ee: pose = hd TB \u2014 \u2014\u2014\u2014 o3y  Sors02sis \u2014 Tar Stang Sheet Gomoi Dee abe 3 sures Pret Searence S289 420 om Mas (5/28/15 15225.52 mms 88 25's \u2018nero \u201cepon # ngooey 88 ~ Peat AVETILL INV ~ woe tae Za eu Megnt ayes er Gump ageAamiied 008 mew vin ame POLE rw fogs 88 BRO aro ucr \u2014 vsemer erent Month Seance vores a \u2014) x",
+          "confidence": 0.31,
+          "corpus_score": 0.52,
+          "reliable": false,
+          "engine": "tesseract",
+          "runtime": 0.808
+        },
+        "easyocr": {
+          "text": "\"LED: BRCWARD CULAFY F Louard _ Fynnun CLERK 53*35:1\" Browa: $ Ccurty Ster {fs Offic? Booking Repcr: 0o 63 $ 501502515 BCSN # 853142 B-Jking Shzel Cuntoi Jele 40 285 ju(304049 Pont~lealano 328/2076 - 076 \"tni CS;28/15 15.25.52 Mibst ~J25 $ Orense Jennt FuBnT Jentet Fue AEZ 277 Miuore Neiynt Eyes 492 Aomited DOB Atale Swin Sa e Fole Fc= Bro BR3 LC; 75-3487 (emIemi Mour & Reswende LuOes 'OnD Cu",
+          "confidence": 0.27,
+          "corpus_score": 0.29,
+          "reliable": false,
+          "engine": "easyocr",
+          "runtime": 3.427
+        },
+        "paddleocr": {
+          "engine": "paddleocr",
+          "skipped": true,
+          "aborted": true
+        }
+      }
+    },
+    "complex_medium_2.jpg": {
+      "winner": "tesseract",
+      "final_text": "This text Is PRIED",
+      "confidence": 0.77,
+      "corpus_score": 0.75,
+      "reliable": true,
+      "runtime": 0.208,
+      "winner_runtime": 0.202,
+      "all_outputs": {
+        "tesseract": {
+          "text": "This text Is PRIED",
+          "confidence": 0.77,
+          "corpus_score": 0.75,
+          "reliable": true,
+          "engine": "tesseract",
+          "runtime": 0.202
+        },
+        "paddleocr": {
+          "engine": "paddleocr",
+          "skipped": true,
+          "aborted": true
+        },
+        "easyocr": {
+          "engine": "easyocr",
+          "skipped": true,
+          "aborted": true
+        }
+      }
+    }
+  },
+  "dummy_images": {
+    "dummy_easy_1.jpg": {
+      "winner": null,
+      "final_text": "",
+      "confidence": 0.0,
+      "corpus_score": 0.0,
+      "reliable": false,
+      "runtime": 1.875,
+      "winner_runtime": null,
+      "all_outputs": {
+        "tesseract": {
+          "text": "Se a i ee a te ca SAN WEN AWA ANN M",
+          "confidence": 0.24,
+          "corpus_score": 0.86,
+          "reliable": false,
+          "engine": "tesseract",
+          "runtime": 0.561
+        },
+        "easyocr": {
+          "text": "",
+          "confidence": 0.0,
+          "corpus_score": 0.0,
+          "reliable": false,
+          "engine": "easyocr",
+          "runtime": 1.872
+        },
+        "paddleocr": {
+          "engine": "paddleocr",
+          "skipped": true,
+          "aborted": true
+        }
+      }
+    },
+    "dummy_easy_2.jpg": {
+      "winner": null,
+      "final_text": "",
+      "confidence": 0.0,
+      "corpus_score": 0.0,
+      "reliable": false,
+      "runtime": 1.732,
+      "winner_runtime": null,
+      "all_outputs": {
+        "tesseract": {
+          "text": "8 See \u2014 ae . 7 a i ne 7 ae _ == lead i eee ee a ee engi! tn ike reece a bo ; pay aa SS 5 ae - a ure | loge eee = ca 7 a a ee i a is oh eS rr co",
+          "confidence": 0.22,
+          "corpus_score": 0.75,
+          "reliable": false,
+          "engine": "tesseract",
+          "runtime": 0.707
+        },
+        "easyocr": {
+          "text": "",
+          "confidence": 0.0,
+          "corpus_score": 0.0,
+          "reliable": false,
+          "engine": "easyocr",
+          "runtime": 1.729
+        },
+        "paddleocr": {
+          "engine": "paddleocr",
+          "skipped": true,
+          "aborted": true
+        }
+      }
+    },
+    "dummy_hard_1.jpg": {
+      "winner": null,
+      "final_text": "",
+      "confidence": 0.0,
+      "corpus_score": 0.0,
+      "reliable": false,
+      "runtime": 1.516,
+      "winner_runtime": null,
+      "all_outputs": {
+        "tesseract": {
+          "text": "= \\ 4/4, y. TG \u2018eC 4 eZ E. Se ul Fa / i \u2014\u2014",
+          "confidence": 0.38,
+          "corpus_score": 0.85,
+          "reliable": false,
+          "engine": "tesseract",
+          "runtime": 0.459
+        },
+        "easyocr": {
+          "text": "",
+          "confidence": 0.0,
+          "corpus_score": 0.0,
+          "reliable": false,
+          "engine": "easyocr",
+          "runtime": 1.513
+        },
+        "paddleocr": {
+          "engine": "paddleocr",
+          "skipped": true,
+          "aborted": true
+        }
+      }
+    },
+    "dummy_hard_2.jpg": {
+      "winner": null,
+      "final_text": "",
+      "confidence": 0.0,
+      "corpus_score": 0.0,
+      "reliable": false,
+      "runtime": 2.083,
+      "winner_runtime": null,
+      "all_outputs": {
+        "tesseract": {
+          "text": "oda = auiaess Fed ATA Rep? 1S Gwe Goes ah iG RAO Sas. SS. Gee Sooo: 1 \u2014\u2014 SS Ss",
+          "confidence": 0.26,
+          "corpus_score": 0.6,
+          "reliable": false,
+          "engine": "tesseract",
+          "runtime": 0.725
+        },
+        "easyocr": {
+          "text": "",
+          "confidence": 0.0,
+          "corpus_score": 0.0,
+          "reliable": false,
+          "engine": "easyocr",
+          "runtime": 2.08
+        },
+        "paddleocr": {
+          "engine": "paddleocr",
+          "skipped": true,
+          "aborted": true
+        }
+      }
+    },
+    "dummy_medium_1.jpg": {
+      "winner": null,
+      "final_text": "",
+      "confidence": 0.0,
+      "corpus_score": 0.0,
+      "reliable": false,
+      "runtime": 1.415,
+      "winner_runtime": null,
+      "all_outputs": {
+        "tesseract": {
+          "text": "\u00bb | \u2018i",
+          "confidence": 0.5,
+          "corpus_score": 1.0,
+          "reliable": false,
+          "engine": "tesseract",
+          "runtime": 0.353
+        },
+        "easyocr": {
+          "text": "",
+          "confidence": 0.0,
+          "corpus_score": 0.0,
+          "reliable": false,
+          "engine": "easyocr",
+          "runtime": 1.412
+        },
+        "paddleocr": {
+          "engine": "paddleocr",
+          "skipped": true,
+          "aborted": true
+        }
+      }
+    },
+    "dummy_medium_2.jpg": {
+      "winner": null,
+      "final_text": "",
+      "confidence": 0.0,
+      "corpus_score": 0.0,
+      "reliable": false,
+      "runtime": 1.171,
+      "winner_runtime": null,
+      "all_outputs": {
+        "tesseract": {
+          "text": "a A Oh) 6: 5 has, \u00a7 Ps ay % PR Sy 4. ip OPES ae He o6c43 Pfs",
+          "confidence": 0.33,
+          "corpus_score": 0.62,
+          "reliable": false,
+          "engine": "tesseract",
+          "runtime": 0.504
+        },
+        "easyocr": {
+          "text": "",
+          "confidence": 0.0,
+          "corpus_score": 0.0,
+          "reliable": false,
+          "engine": "easyocr",
+          "runtime": 1.167
+        },
+        "paddleocr": {
+          "engine": "paddleocr",
+          "skipped": true,
+          "aborted": true
+        }
+      }
+    }
+  },
+  "scene_images": {
+    "scene_easy_1.jpg": {
+      "winner": null,
+      "final_text": "",
+      "confidence": 0.0,
+      "corpus_score": 0.0,
+      "reliable": false,
+      "runtime": 1.212,
+      "winner_runtime": null,
+      "all_outputs": {
+        "tesseract": {
+          "text": "Te gS fe W 8am s5 - ee ae ai 4 . i a ee. \u2014 1. See. ee",
+          "confidence": 0.32,
+          "corpus_score": 0.81,
+          "reliable": false,
+          "engine": "tesseract",
+          "runtime": 0.456
+        },
+        "easyocr": {
+          "text": "STOPI",
+          "confidence": 0.35,
+          "corpus_score": 0.0,
+          "reliable": false,
+          "engine": "easyocr",
+          "runtime": 1.209
+        },
+        "paddleocr": {
+          "engine": "paddleocr",
+          "skipped": true,
+          "aborted": true
+        }
+      }
+    },
+    "scene_easy_2.jpg": {
+      "winner": "easyocr",
+      "final_text": "ROAD CLOSED",
+      "confidence": 1.0,
+      "corpus_score": 0.99,
+      "reliable": true,
+      "runtime": 1.418,
+      "winner_runtime": 1.416,
+      "all_outputs": {
+        "tesseract": {
+          "text": ": ROAD",
+          "confidence": 0.48,
+          "corpus_score": 1.0,
+          "reliable": false,
+          "engine": "tesseract",
+          "runtime": 0.354
+        },
+        "easyocr": {
+          "text": "ROAD CLOSED",
+          "confidence": 1.0,
+          "corpus_score": 0.99,
+          "reliable": true,
+          "engine": "easyocr",
+          "runtime": 1.416
+        },
+        "paddleocr": {
+          "engine": "paddleocr",
+          "skipped": true,
+          "aborted": true
+        }
+      }
+    },
+    "scene_hard_1.jpg": {
+      "winner": "easyocr",
+      "final_text": "To To Hl To To EAST INORTH EAST 66 ISoUTH WEST WTEaSU MEsun EEI 40 89 180 40 17 40 Page Phoenix Albuquerque Los Angeles",
+      "confidence": 0.76,
+      "corpus_score": 0.64,
+      "reliable": true,
+      "runtime": 2.501,
+      "winner_runtime": 2.497,
+      "all_outputs": {
+        "tesseract": {
+          "text": "a SE re es ica EO ee \u20ac Page pee Phoenix > Sei Albuquerque |. \u201c| Los Angeles |",
+          "confidence": 0.5,
+          "corpus_score": 0.79,
+          "reliable": false,
+          "engine": "tesseract",
+          "runtime": 0.624
+        },
+        "easyocr": {
+          "text": "To To Hl To To EAST INORTH EAST 66 ISoUTH WEST WTEaSU MEsun EEI 40 89 180 40 17 40 Page Phoenix Albuquerque Los Angeles",
+          "confidence": 0.76,
+          "corpus_score": 0.64,
+          "reliable": true,
+          "engine": "easyocr",
+          "runtime": 2.497
+        },
+        "paddleocr": {
+          "engine": "paddleocr",
+          "skipped": true,
+          "aborted": true
+        }
+      }
+    },
+    "scene_hard_2.jpg": {
+      "winner": null,
+      "final_text": "",
+      "confidence": 0.0,
+      "corpus_score": 0.0,
+      "reliable": false,
+      "runtime": 1.792,
+      "winner_runtime": null,
+      "all_outputs": {
+        "tesseract": {
+          "text": "PA See iy \u20ac  \u00a7 mee Y . - 4 se wes jes sa] of) Se Ns 1 ' | PR BY gS",
+          "confidence": 0.25,
+          "corpus_score": 0.75,
+          "reliable": false,
+          "engine": "tesseract",
+          "runtime": 0.517
+        },
+        "easyocr": {
+          "text": "",
+          "confidence": 0.0,
+          "corpus_score": 0.0,
+          "reliable": false,
+          "engine": "easyocr",
+          "runtime": 1.789
+        },
+        "paddleocr": {
+          "engine": "paddleocr",
+          "skipped": true,
+          "aborted": true
+        }
+      }
+    },
+    "scene_medium_1.jpg": {
+      "winner": "easyocr",
+      "final_text": "pray",
+      "confidence": 1.0,
+      "corpus_score": 0.88,
+      "reliable": true,
+      "runtime": 1.063,
+      "winner_runtime": 1.059,
+      "all_outputs": {
+        "tesseract": {
+          "text": "Oe Ly ta i a fe ee Sy Ee ALO, . ihe ~ | a \u2018 te. er ee Z yy \u2018Gf,",
+          "confidence": 0.19,
+          "corpus_score": 0.61,
+          "reliable": false,
+          "engine": "tesseract",
+          "runtime": 0.507
+        },
+        "easyocr": {
+          "text": "pray",
+          "confidence": 1.0,
+          "corpus_score": 0.88,
+          "reliable": true,
+          "engine": "easyocr",
+          "runtime": 1.059
+        },
+        "paddleocr": {
+          "engine": "paddleocr",
+          "skipped": true,
+          "aborted": true
+        }
+      }
+    },
+    "scene_medium_2.jpg": {
+      "winner": "easyocr",
+      "final_text": "ROAD CLOSED AHEAD",
+      "confidence": 1.0,
+      "corpus_score": 0.99,
+      "reliable": true,
+      "runtime": 1.82,
+      "winner_runtime": 1.817,
+      "all_outputs": {
+        "tesseract": {
+          "text": "pega \u2018in WEES, CRS Bia wesc eS | PERS",
+          "confidence": 0.27,
+          "corpus_score": 0.36,
+          "reliable": false,
+          "engine": "tesseract",
+          "runtime": 0.354
+        },
+        "easyocr": {
+          "text": "ROAD CLOSED AHEAD",
+          "confidence": 1.0,
+          "corpus_score": 0.99,
+          "reliable": true,
+          "engine": "easyocr",
+          "runtime": 1.817
+        },
+        "paddleocr": {
+          "engine": "paddleocr",
+          "skipped": true,
+          "aborted": true
+        }
+      }
+    }
+  }
+}

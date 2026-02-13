@@ -1,0 +1,48 @@
+{
+  "scene_images": {
+    "scene_easy_1.jpg": {
+      "error": "'isReliable'"
+    },
+    "scene_easy_2.jpg": {
+      "error": "'isReliable'"
+    },
+    "scene_hard_1.jpg": {
+      "error": "'isReliable'"
+    },
+    "scene_hard_2.jpg": {
+      "error": "'isReliable'"
+    },
+    "scene_medium_1.jpg": {
+      "error": "'isReliable'"
+    },
+    "scene_medium_2.jpg": {
+      "east": {
+        "regions": [],
+        "region_count": 0,
+        "reliable": false,
+        "runtime": 0.529
+      },
+      "tesseract": {
+        "text": "pega \u2018in WEES, CRS Bia wesc eS | PERS",
+        "confidence": 0.27,
+        "corpus_score": 0.36,
+        "reliable": false,
+        "runtime": 0.354
+      },
+      "easyocr": {
+        "text": "ROAD CLOSED AHEAD",
+        "confidence": 1.0,
+        "corpus_score": 0.99,
+        "reliable": true,
+        "runtime": 3.844
+      },
+      "paddleocr": {
+        "text": "ROADSE CLOSED AHEAOB",
+        "confidence": 0.77,
+        "corpus_score": 0.33,
+        "reliable": false,
+        "runtime": 2.785
+      }
+    }
+  }
+}

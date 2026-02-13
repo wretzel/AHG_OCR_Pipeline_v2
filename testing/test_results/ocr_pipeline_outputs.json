@@ -1,0 +1,208 @@
+{
+  "clear_images": {
+    "clear_easy_1.jpg": {
+      "error": "[WinError 1] Incorrect function"
+    },
+    "clear_easy_2.jpg": {
+      "error": "'isReliable'"
+    },
+    "clear_hard_1.jpg": {
+      "error": "'isReliable'"
+    },
+    "clear_hard_2.jpg": {
+      "error": "'isReliable'"
+    },
+    "clear_medium_1.jpg": {
+      "error": "'isReliable'"
+    },
+    "clear_medium_2.jpg": {
+      "error": "'isReliable'"
+    }
+  },
+  "complex_images": {
+    "complex_easy_1.jpg": {
+      "error": "'isReliable'"
+    },
+    "complex_easy_2.jpg": {
+      "error": "'isReliable'"
+    },
+    "complex_hard_1.jpg": {
+      "error": "'isReliable'"
+    },
+    "complex_hard_2.jpg": {
+      "error": "'isReliable'"
+    },
+    "complex_medium_1.jpg": {
+      "error": "'isReliable'"
+    },
+    "complex_medium_2.jpg": {
+      "winner": "tesseract",
+      "final_text": "This text Is PRIED",
+      "confidence": 0.77,
+      "corpus_score": 0.75,
+      "reliable": true,
+      "all_outputs": {
+        "east": {
+          "regions": [],
+          "region_count": 0,
+          "reliable": false,
+          "engine": "east",
+          "runtime": 0.139
+        },
+        "tesseract": {
+          "text": "This text Is PRIED",
+          "confidence": 0.77,
+          "corpus_score": 0.75,
+          "reliable": true,
+          "engine": "tesseract",
+          "runtime": 0.184
+        }
+      }
+    }
+  },
+  "dummy_images": {
+    "dummy_easy_1.jpg": {
+      "winner": null,
+      "final_text": "",
+      "confidence": 0.0,
+      "corpus_score": 0.0,
+      "reliable": false,
+      "all_outputs": {
+        "east": {
+          "regions": [],
+          "region_count": 0,
+          "reliable": false,
+          "engine": "east",
+          "runtime": 0.155
+        },
+        "tesseract": {
+          "text": "Se a i ee a te ca SAN WEN AWA ANN M",
+          "confidence": 0.24,
+          "corpus_score": 0.86,
+          "reliable": false,
+          "engine": "tesseract",
+          "runtime": 0.368
+        }
+      }
+    },
+    "dummy_easy_2.jpg": {
+      "winner": null,
+      "final_text": "",
+      "confidence": 0.0,
+      "corpus_score": 0.0,
+      "reliable": false,
+      "all_outputs": {
+        "east": {
+          "regions": [],
+          "region_count": 0,
+          "reliable": false,
+          "engine": "east",
+          "runtime": 0.149
+        },
+        "tesseract": {
+          "text": "8 See \u2014 ae . 7 a i ne 7 ae _ == lead i eee ee a ee engi! tn ike reece a bo ; pay aa SS 5 ae - a ure | loge eee = ca 7 a a ee i a is oh eS rr co",
+          "confidence": 0.22,
+          "corpus_score": 0.75,
+          "reliable": false,
+          "engine": "tesseract",
+          "runtime": 0.435
+        }
+      }
+    },
+    "dummy_hard_1.jpg": {
+      "error": "'isReliable'"
+    },
+    "dummy_hard_2.jpg": {
+      "error": "'isReliable'"
+    },
+    "dummy_medium_1.jpg": {
+      "winner": null,
+      "final_text": "",
+      "confidence": 0.0,
+      "corpus_score": 0.0,
+      "reliable": false,
+      "all_outputs": {
+        "east": {
+          "regions": [],
+          "region_count": 0,
+          "reliable": false,
+          "engine": "east",
+          "runtime": 0.151
+        },
+        "tesseract": {
+          "text": "\u00bb | \u2018i",
+          "confidence": 0.5,
+          "corpus_score": 1.0,
+          "reliable": false,
+          "engine": "tesseract",
+          "runtime": 0.24
+        }
+      }
+    },
+    "dummy_medium_2.jpg": {
+      "winner": null,
+      "final_text": "",
+      "confidence": 0.0,
+      "corpus_score": 0.0,
+      "reliable": false,
+      "all_outputs": {
+        "east": {
+          "regions": [],
+          "region_count": 0,
+          "reliable": false,
+          "engine": "east",
+          "runtime": 0.151
+        },
+        "tesseract": {
+          "text": "a A Oh) 6: 5 has, \u00a7 Ps ay % PR Sy 4. ip OPES ae He o6c43 Pfs",
+          "confidence": 0.33,
+          "corpus_score": 0.62,
+          "reliable": false,
+          "engine": "tesseract",
+          "runtime": 0.335
+        }
+      }
+    }
+  },
+  "scene_images": {
+    "scene_easy_1.jpg": {
+      "error": "'isReliable'"
+    },
+    "scene_easy_2.jpg": {
+      "error": "'isReliable'"
+    },
+    "scene_hard_1.jpg": {
+      "error": "'isReliable'"
+    },
+    "scene_hard_2.jpg": {
+      "error": "'isReliable'"
+    },
+    "scene_medium_1.jpg": {
+      "error": "'isReliable'"
+    },
+    "scene_medium_2.jpg": {
+      "winner": null,
+      "final_text": "",
+      "confidence": 0.0,
+      "corpus_score": 0.0,
+      "reliable": false,
+      "all_outputs": {
+        "east": {
+          "regions": [],
+          "region_count": 0,
+          "reliable": false,
+          "engine": "east",
+          "runtime": 0.162
+        },
+        "tesseract": {
+          "text": "pega \u2018in WEES, CRS Bia wesc eS | PERS",
+          "confidence": 0.27,
+          "corpus_score": 0.36,
+          "reliable": false,
+          "engine": "tesseract",
+          "runtime": 0.266
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "east": {
+    "regions": [
+      {
+        "box": [
+          40,
+          26,
+          93,
+          39
+        ],
+        "confidence": 1.0,
+        "isReliable": true
+      }
+    ],
+    "region_count": 1,
+    "runtime": 0.305
+  },
+  "tesseract": {
+    "text": "Hello",
+    "confidence": 0.96,
+    "corpus_score": 0.87,
+    "reliable": true,
+    "runtime": 0.137
+  },
+  "easyocr": {
+    "text": "Hello",
+    "confidence": 1.0,
+    "corpus_score": 0.87,
+    "reliable": true,
+    "runtime": 0.254
+  },
+  "paddleocr": {
+    "text": "Hello",
+    "confidence": 1.0,
+    "corpus_score": 0.87,
+    "reliable": true,
+    "runtime": 1.669
+  }
+}
