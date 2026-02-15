@@ -1,38 +1,38 @@
 {
   "pytesseract": {
     "status": true,
-    "load_time": 0.12
+    "load_time": 0.146
   },
   "easyocr_en": {
     "status": true,
-    "load_time": 1.773
+    "load_time": 1.972
   },
   "easyocr_ru": {
     "status": true,
-    "load_time": 1.752
+    "load_time": 1.929
   },
   "easyocr_ar": {
     "status": true,
-    "load_time": 2.647
+    "load_time": 2.949
   },
   "easyocr_ch": {
     "status": true,
-    "load_time": 1.81
+    "load_time": 1.977
   },
   "paddleocr": {
     "status": true,
-    "load_time": 3.85
+    "load_time": 4.53
   },
   "cv2_east": {
     "status": true,
-    "load_time": 0.375
+    "load_time": 0.354
   },
   "spellchecker": {
     "status": true,
-    "load_time": 0.107
+    "load_time": 0.092
   },
   "corpus_freqs": {
     "status": true,
-    "load_time": 0.101
+    "load_time": 0.04
   }
 }

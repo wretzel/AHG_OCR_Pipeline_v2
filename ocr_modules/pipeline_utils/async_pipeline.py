@@ -5,7 +5,6 @@ import time
 from ocr_modules.pipeline_utils.pipeline import run_pipeline
 
 class AsyncPipeline:
-    """Non-blocking pipeline wrapper with state management."""
     def __init__(self, models, executor, mode="steady"):
         self.models = models
         self.executor = executor
@@ -15,10 +14,6 @@ class AsyncPipeline:
         self.lock = threading.Lock()
 
     def process_frame_async(self, cv_img, pil_img, callback=None):
-        """
-        Submit frame to pipeline without blocking.
-        Callback receives (frame_id, ocr_result) when done.
-        """
         if not self.is_ready:
             return False  # Pipeline busy
 
@@ -40,6 +35,5 @@ class AsyncPipeline:
         return True
 
     def is_pipeline_ready(self):
-        """Check if pipeline is ready for next frame."""
         with self.lock:
             return self.is_ready

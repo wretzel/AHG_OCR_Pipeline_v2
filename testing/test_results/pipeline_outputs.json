@@ -1,0 +1,40 @@
+{
+    "clear": {
+        "clear_easy_1.jpg": {
+            "winner": "phase1",
+            "confidence": 0.96,
+            "reliable": true,
+            "runtime": 2.0
+        },
+        "clear_easy_2.jpg": {
+            "winner": "phase1",
+            "confidence": 0.96,
+            "reliable": true,
+            "runtime": 2.0
+        },
+        "clear_medium_1.jpg": {
+            "winner": "phase1",
+            "confidence": 0.89,
+            "reliable": true,
+            "runtime": 2.0
+        },
+        "clear_medium_2.jpg": {
+            "winner": "phase1",
+            "confidence": 0.96,
+            "reliable": true,
+            "runtime": 2.0
+        },
+        "clear_hard_1.jpg": {
+            "winner": "phase1",
+            "confidence": 0.78,
+            "reliable": false,
+            "runtime": 2.0
+        },
+        "clear_hard_2.jpg": {
+            "winner": "phase1",
+            "confidence": 0.95,
+            "reliable": true,
+            "runtime": 2.0
+        }
+    }
+}

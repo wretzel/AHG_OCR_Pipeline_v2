@@ -1,0 +1,7 @@
+# Helper functions for shared utilities
+
+def normalize_conf(value, default=0.0):
+    try:
+        return float(value)
+    except (TypeError, ValueError):
+        return default

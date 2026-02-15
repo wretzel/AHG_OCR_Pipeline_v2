@@ -2,10 +2,10 @@
 
 import sys
 import os
+from shared.path_utils import PROJECT_ROOT
 
 # Ensure project root is in sys.path
-project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
-sys.path.insert(0, project_root)
+sys.path.insert(0, str(PROJECT_ROOT))
 
 import json
 from ocr_modules.base_modules.initialization import initialize_models

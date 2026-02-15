@@ -2,9 +2,10 @@
 import json
 import os
 import re
+from shared.path_utils import project_path
 
-# Load and normalize corpus frequency table
-CORPUS_PATH = os.path.join(os.path.dirname(__file__), "..", "..", "resources", "corpus_freqs.json")
+CORPUS_PATH = project_path("resources", "corpus_freqs.json")
+
 with open(CORPUS_PATH, "r", encoding="utf-8") as f:
     raw_freqs = json.load(f)
 

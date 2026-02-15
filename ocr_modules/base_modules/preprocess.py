@@ -3,32 +3,35 @@
 import cv2
 import numpy as np
 from PIL import Image
+from shared.helper import normalize_conf  # central safe float caster
 
 def normalize_to_rgb(image):
-    """
-    Ensure input is an RGB ndarray.
-    Converts from PIL, grayscale, or BGR if needed.
-    """
+
     if isinstance(image, Image.Image):
         return np.array(image.convert("RGB"))
     elif isinstance(image, np.ndarray):
         if image.ndim == 2:  # grayscale
             return cv2.cvtColor(image, cv2.COLOR_GRAY2RGB)
-        elif image.shape[2] == 3:
+        elif image.ndim == 3 and image.shape[2] == 3:
             # Assume BGR (OpenCV default) → convert to RGB
             return cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+    # Fallback: return as-is
     return image
 
+
 def fast_preprocess_bgr(image, max_side=1280):
-    """
-    Resize and normalize contrast for BGR images.
-    - Caps largest side to max_side (keeps aspect ratio).
-    - Applies CLAHE on luminance channel for contrast.
-    """
+
+    if not isinstance(image, np.ndarray) or image.ndim < 2:
+        raise ValueError("fast_preprocess_bgr expects a BGR ndarray")
+
     h, w = image.shape[:2]
     scale = min(1.0, float(max_side) / max(h, w))
     if scale < 1.0:
-        image = cv2.resize(image, (int(w * scale), int(h * scale)), interpolation=cv2.INTER_AREA)
+        image = cv2.resize(
+            image,
+            (int(w * scale), int(h * scale)),
+            interpolation=cv2.INTER_AREA
+        )
 
     lab = cv2.cvtColor(image, cv2.COLOR_BGR2LAB)
     l, a, b = cv2.split(lab)
@@ -39,13 +42,9 @@ def fast_preprocess_bgr(image, max_side=1280):
 
 
 def crop_regions(image, east_result, max_regions=10, base_padding=10):
-    """
-    Given a BGR image and EAST result dict, return padded cropped sub-images for each region.
-    - image: original BGR ndarray
-    - east_result: dict with "regions" key containing boxes
-    - max_regions: cap to avoid overload
-    - base_padding: minimum pixels to expand each box
-    """
+    if not isinstance(image, np.ndarray):
+        raise ValueError("crop_regions expects a BGR ndarray")
+
     crops = []
     h, w = image.shape[:2]
 
@@ -54,13 +53,16 @@ def crop_regions(image, east_result, max_regions=10, base_padding=10):
         if not box or len(box) != 4:
             continue
 
-        x1, y1, x2, y2 = box
+        try:
+            x1, y1, x2, y2 = [int(v) for v in box]
+        except Exception:
+            continue
 
         # Dynamic padding: scale with box size
         pad_x = max(base_padding, int(0.2 * (x2 - x1)))
         pad_y = max(base_padding, int(0.2 * (y2 - y1)))
 
-        # Apply padding
+        # Apply padding safely
         x1 = max(0, x1 - pad_x)
         y1 = max(0, y1 - pad_y)
         x2 = min(w, x2 + pad_x)
@@ -70,11 +72,12 @@ def crop_regions(image, east_result, max_regions=10, base_padding=10):
         if (x2 - x1) < 40 or (y2 - y1) < 20:
             continue
 
+        if isinstance(image, np.ndarray):
+            crop = image[y1:y2, x1:x2]
+            crops.append(crop)
+
         # Debug log
         print(f"Region {i}: original={box}, padded=({x1},{y1},{x2},{y2}), size={x2-x1}x{y2-y1}")
-
-        crop = image[y1:y2, x1:x2]
-        crops.append(crop)
 
     return crops
 
@@ -87,35 +90,7 @@ def aggregate_crop_results(
     min_crop_conf=0.4,
     verbose=False
 ):
-    """
-    Run an OCR engine function over a list of cropped regions.
-    Merge texts and confidences into a single result dict.
 
-    Parameters
-    ----------
-    crops : list
-        List of BGR or PIL crops (already sorted if needed).
-    runner_fn : callable
-        OCR runner function (e.g. run_easyocr_with_reader).
-    reader : object, optional
-        Model/reader object to pass into runner_fn if required.
-    conf_threshold : float
-        Confidence cutoff for overall reliability.
-    min_crop_conf : float
-        Minimum confidence to include a crop's result.
-    verbose : bool
-        If True, print per-crop debug info.
-
-    Returns
-    -------
-    dict
-        {
-            "text": merged text string,
-            "confidence": average confidence of accepted crops,
-            "reliable": bool flag based on conf_threshold,
-            "details": list of per-crop dicts for transparency
-        }
-    """
     if not callable(runner_fn):
         raise TypeError(f"runner_fn must be callable, got {type(runner_fn)}")
 
@@ -124,8 +99,8 @@ def aggregate_crop_results(
     for i, crop in enumerate(crops):
         try:
             res = runner_fn(crop, reader) if reader is not None else runner_fn(crop)
-            text = res.get("text", "").strip()
-            conf = float(res.get("confidence", 0.0))
+            text = (res.get("text") or "").strip()
+            conf = normalize_conf(res.get("confidence"))
 
             details.append({"index": i, "text": text, "confidence": conf})
 
@@ -149,6 +124,6 @@ def aggregate_crop_results(
     return {
         "text": merged_text,
         "confidence": round(avg_conf, 2),
-        "reliable": avg_conf >= conf_threshold,
+        "reliable": normalize_conf(avg_conf) >= conf_threshold,
         "details": details
     }

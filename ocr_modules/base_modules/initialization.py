@@ -7,6 +7,8 @@ import json
 import logging
 import warnings
 import contextlib
+import shutil
+import platform
 import numpy as np
 import pytesseract
 import easyocr
@@ -33,19 +35,10 @@ import contextlib
 
 @contextlib.contextmanager
 def suppress_output():
+    # Use high-level redirect to /dev/null which is portable on Windows
     with open(os.devnull, "w") as devnull:
-        old_stdout_fd = os.dup(sys.stdout.fileno())
-        old_stderr_fd = os.dup(sys.stderr.fileno())
-
-        try:
-            os.dup2(devnull.fileno(), sys.stdout.fileno())
-            os.dup2(devnull.fileno(), sys.stderr.fileno())
+        with contextlib.redirect_stdout(devnull), contextlib.redirect_stderr(devnull):
             yield
-        finally:
-            os.dup2(old_stdout_fd, sys.stdout.fileno())
-            os.dup2(old_stderr_fd, sys.stderr.fileno())
-            os.close(old_stdout_fd)
-            os.close(old_stderr_fd)
 import logging
 
 def suppress_paddle_logging():
@@ -75,8 +68,16 @@ def initialize_models(callback=None):
 
     # Tesseract
     def load_tesseract():
-        # Explicit path (adjust if needed)
-        pytesseract.pytesseract.tesseract_cmd = r"C:\Users\hgk07\AppData\Local\Programs\Tesseract-OCR\tesseract.exe"
+        if platform.system() == "Windows":
+            # Adjust if your Windows install is in a different location
+            pytesseract.pytesseract.tesseract_cmd = (
+                r"C:\Users\hgk07\AppData\Local\Programs\Tesseract-OCR\tesseract.exe"
+            )
+        else:
+            # On Linux/Pi, check if tesseract is available
+            if shutil.which("tesseract") is None:
+                raise RuntimeError("❌ Tesseract not found on PATH. Install with: sudo apt install tesseract-ocr")
+            pytesseract.pytesseract.tesseract_cmd = "tesseract"
 
         # Check if binary is callable
         try:
@@ -85,6 +86,7 @@ def initialize_models(callback=None):
                 stderr=subprocess.STDOUT,
                 text=True
             )
+            # print(f"✅ Tesseract version: {version_output.strip().splitlines()[0]}")
         except Exception as e:
             raise RuntimeError(f"Tesseract binary not callable: {e}")
 
@@ -96,6 +98,7 @@ def initialize_models(callback=None):
             text = pytesseract.image_to_string(img)
             if "Test" not in text:
                 raise RuntimeError("Tesseract OCR failed to detect dummy text.")
+            # print("✅ Tesseract OCR dummy test passed.")
         except Exception as e:
             raise RuntimeError(f"Tesseract OCR failed: {e}")
 

@@ -3,6 +3,8 @@
 import cv2
 import numpy as np
 
+from shared.helper import normalize_conf
+
 def decode_predictions(scores, geometry, conf_threshold=0.5):
     num_rows, num_cols = scores.shape[2:4]
     boxes = []
@@ -69,12 +71,6 @@ def detect_text_east(image, model_path="resources/east_model.pb", net=None, conf
     return final_boxes
 
 def merge_horizontal_boxes(regions, y_tolerance=15, x_gap=60):
-    """
-    Merge horizontally adjacent boxes that overlap vertically and are close in x.
-    - regions: list of dicts with "box" and "confidence"
-    - y_tolerance: max vertical offset allowed to consider boxes aligned
-    - x_gap: max horizontal gap allowed to merge boxes
-    """
     merged = []
     for region in sorted(regions, key=lambda r: r["box"][0]):  # sort by x1
         x1, y1, x2, y2 = region["box"]
@@ -91,10 +87,6 @@ def merge_horizontal_boxes(regions, y_tolerance=15, x_gap=60):
     return merged
 
 def cluster_by_baseline(regions, y_tolerance=0.3):
-    """
-    Group boxes by baseline (y-center proximity) and merge each group into a line-level span.
-    y_tolerance: fraction of median height allowed for vertical alignment tolerance.
-    """
     if not regions:
         return []
 
@@ -145,12 +137,6 @@ def expand_boxes(boxes, pad_frac_x=0.12, pad_frac_y=0.18, min_pad=10, image_shap
 # ocr_modules/base_modules/east_boxes.py
 
 def sort_regions_by_reading_order(regions):
-    """
-    Sort EAST regions into natural reading order.
-    - Primary key: y1 (top of box)
-    - Secondary key: x1 (left of box)
-    Returns a new list of region dicts.
-    """
     return sorted(regions, key=lambda r: (r["box"][1], r["box"][0]))
 
 import cv2
@@ -158,13 +144,6 @@ import numpy as np
 from PIL import Image
 
 def visualize_region_ocr_debug(cv_img, regions, ocr_fn, engine="easyocr", min_conf=0.0):
-    """
-    For each EAST region:
-    - Crop the region
-    - Run OCR via ocr_fn (expects either np.ndarray or PIL.Image depending on engine)
-    - Overlay the region with its OCR result and confidence
-    Returns a debug image with annotations.
-    """
     debug_img = cv_img.copy()
     font = cv2.FONT_HERSHEY_SIMPLEX
 
@@ -186,8 +165,8 @@ def visualize_region_ocr_debug(cv_img, regions, ocr_fn, engine="easyocr", min_co
             print(f"⚠️ OCR failed on region {i}: {e}")
 
         # Normalize output
-        texts = [t[1] for t in results if t[2] >= min_conf]
-        confs = [t[2] for t in results if t[2] >= min_conf]
+        texts = [t[1] for t in results if normalize_conf(t[2]) >= min_conf]
+        confs = [normalize_conf(t[2]) for t in results if normalize_conf(t[2]) >= min_conf]
         avg_conf = round(sum(confs) / len(confs), 2) if confs else 0.0
         label = f"R{i}: {' '.join(texts)} ({avg_conf})"
 

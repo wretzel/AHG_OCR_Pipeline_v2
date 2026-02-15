@@ -4,25 +4,15 @@ import time
 
 MODES = {
     "fast": {"budget": 1.0, "min_interval": 0.0},        # cap at 1s, finish ASAP
-    "steady": {"budget": 3.0, "min_interval": 2.0},      # Consistent rhythm, allows up to 3s
-    "extended": {"budget": None, "min_interval": 10.0}    # no max per image, but wait 10s between cycles
+    "steady": {"budget": 5.0, "min_interval": 2.0},      # Consistent rhythm, allows up to 5s
+    "extended": {"budget": 9999.0, "min_interval": 10.0}    # no max per image, but wait 10s between cycles
 }
 
 def get_mode_budget(mode_name):
-    """
-    Get the budget for a given mode.
-    This is passed to Phase 1 and Phase 2 for runtime control.
-    """
     mode = MODES.get(mode_name, MODES["steady"])
     return mode["budget"]
 
 def enforce_mode(mode_name, start_time):
-    """
-    Enforce timing behavior based on mode.
-    - fast: cap runtime at 1s
-    - steady: Consistent rhythm, allows up to 3s
-    - extended: no max per image, enforce 10s minimum between scans
-    """
     mode = MODES.get(mode_name, MODES["steady"])
     elapsed = time.perf_counter() - start_time
 

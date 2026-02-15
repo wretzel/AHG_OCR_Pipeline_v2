@@ -31,10 +31,6 @@ def run_with_abort_check(fn, *args, stop_event=None, max_time=3.5, **kwargs):
 from ocr_modules.base_modules.preprocess import crop_regions, aggregate_crop_results
 
 def run_easyocr_guided(cv_img, reader, east_result=None, conf_threshold=0.6):
-    """
-    Run EasyOCR with optional EAST-guided cropping.
-    Falls back to full image if no regions provided.
-    """
     if east_result and east_result.get("region_count", 0) > 0:
         crops = crop_regions(cv_img, east_result)
         return aggregate_crop_results(crops, run_easyocr_with_reader, reader,
@@ -43,10 +39,6 @@ def run_easyocr_guided(cv_img, reader, east_result=None, conf_threshold=0.6):
         return run_easyocr_with_reader(cv_img, reader)
 
 def ocr_race_engines(cv_img, pil_img, models, timeout=5.0, east_result=None):
-    """
-    Run OCR engines in parallel with abort-on-winner logic.
-    Optionally guide EasyOCR/PaddleOCR with EAST regions.
-    """
     stop_event = Event()
     start_time = time.perf_counter()
     results = {}

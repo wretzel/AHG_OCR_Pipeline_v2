@@ -25,6 +25,7 @@ from ocr_modules.base_modules.parsers import parse_paddleocr_output
 from ocr_modules.base_modules.east_boxes import decode_predictions
 from ocr_modules.base_modules.east_boxes import merge_horizontal_boxes
 from ocr_modules.base_modules.corpus_score import corpus_score
+from shared.path_utils import ensure_dir, project_path
 _models = None
 
 def load_ocr_models(force_reload=False):
@@ -108,15 +109,25 @@ def run_paddleocr(image, reader, east_result=None):
         }
 
 from ocr_modules.base_modules.east_boxes import merge_horizontal_boxes
-# If you place cluster_by_baseline and expand_boxes in east_boxes.py, import them similarly:
+
 from ocr_modules.base_modules.east_boxes import cluster_by_baseline, expand_boxes
 
 from ocr_modules.base_modules.east_boxes import sort_regions_by_reading_order
+import threading
 
-def run_east(image):
+# Lock to protect OpenCV DNN net forward calls which are not thread-safe
+_EAST_NET_LOCK = threading.Lock()
+
+def run_east(image, models=None):
     """Run EAST text detector and return annotated regions (parsed)."""
-    models = load_ocr_models()
-    east_net = models.get("east")
+    if models is None:
+        models = load_ocr_models()
+    shared_net = models.get("east")
+    # Avoid using a Net created in a different thread: create a local Net in worker threads
+    if threading.current_thread() is threading.main_thread():
+        east_net = shared_net if shared_net is not None else cv2.dnn.readNet("resources/east_model.pb")
+    else:
+        east_net = cv2.dnn.readNet("resources/east_model.pb")
 
     target_size = 640
     blob = cv2.dnn.blobFromImage(
@@ -127,10 +138,12 @@ def run_east(image):
         True,
         False,
     )
-    east_net.setInput(blob)
-    scores, geometry = east_net.forward(
-        ["feature_fusion/Conv_7/Sigmoid", "feature_fusion/concat_3"]
-    )
+    # Protect setInput+forward with a lock to avoid OpenCV native crashes
+    with _EAST_NET_LOCK:
+        east_net.setInput(blob)
+        scores, geometry = east_net.forward(
+            ["feature_fusion/Conv_7/Sigmoid", "feature_fusion/concat_3"]
+        )
     raw_boxes, raw_confidences = decode_predictions(scores, geometry)
 
     # NMS
@@ -170,11 +183,14 @@ def run_east(image):
         x1, y1, x2, y2 = r["box"]
         cv2.rectangle(annotated, (x1, y1), (x2, y2), (0, 255, 0), 2)
 
-    out_dir = os.path.join("testing", "test_results")
-    os.makedirs(out_dir, exist_ok=True)
-    out_path = os.path.join(out_dir, "east_output.png")
+    out_dir = project_path("testing", "test_results")
+    out_path = out_dir / "east_output.png"
+
+    # Ensure directory exists before writing
+    ensure_dir(out_path)
+
     if annotated is not None and annotated.size > 0:
-        ok = cv2.imwrite(out_path, annotated)
+        ok = cv2.imwrite(str(out_path), annotated)  
         if not ok:
             print(f"⚠️ cv2.imwrite failed for {out_path}")
     else:
