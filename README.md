@@ -55,6 +55,31 @@ shared/             Diagnostics, frame buffers, summaries, helpers
 testing/            Images, PDFs, runners, diagnostics, benchmarks
 voice/              Async voice engine, recognizer, subtitles
 ```
+---
+
+## 📸 Hardware Implementation
+
+![Hardware Implementation](docs/hardware-implementation.png)
+
+---
+
+## 🧠 OCR Pipeline Diagram
+
+![OCR Pipeline](docs/ocr-pipeline.png)
+
+---
+
+## 🔊 Voice Pipeline Diagram
+
+![Voice Pipeline](docs/voice-pipeline.png)
+
+---
+
+## 🏗 System Architecture Overview
+
+![System Architecture](docs/system-architecture.png)
+
+---
 
 ---
 
@@ -228,6 +253,9 @@ It can serve as:
 ## 📜 License
 
 MIT License
+
+
+
 
 
 
